@@ -50,13 +50,16 @@ class Customer
     return self.films.count()
   end
 
-  def buy_ticket(film)
-    @funds -= film.price()
-    self.update()
-    Ticket.new({
-      "customer_id" => @id,
-      "film_id" => film.id
-      }).save()
+  def buy_ticket(film, screening)
+    if screening.enough_space?
+      @funds -= film.price()
+      self.update()
+      Ticket.new({
+        "customer_id" => @id,
+        "film_id" => film.id,
+        "screening_id" => screening.id
+        }).save()
+    end
   end
 
   def self.all

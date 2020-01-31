@@ -36,7 +36,7 @@ screening1 = Screening.new({"film_id" => film1.id, "screen_id" => screen1.id, "f
 screening1.save()
 screening2 = Screening.new({"film_id" => film2.id, "screen_id" => screen1.id, "film_time" => "11:30"})
 screening2.save()
-screening3 = Screening.new({"film_id" => film1.id, "screen_id" => screen2.id, "film_time" => "21:00"})
+screening3 = Screening.new({"film_id" => film1.id, "screen_id" => screen2.id, "film_time" => "20:00"})
 screening3.save()
 
 binding.pry

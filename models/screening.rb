@@ -9,7 +9,7 @@ class Screening
     @id = options["id"].to_i if options["id"]
     @film_id = options["film_id"].to_i
     @screen_id = options["screen_id"].to_i
-    @film_time = options["film_time"].to_i
+    @film_time = options["film_time"]
   end
 
   def save()

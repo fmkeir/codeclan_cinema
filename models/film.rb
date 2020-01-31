@@ -1,7 +1,7 @@
 require('pg')
 require_relative('../db/sql_runner')
 
-class Filmn
+class Film
   attr_accessor :title, :price
   attr_reader :id
 

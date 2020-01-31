@@ -1,5 +1,5 @@
 require('pg')
-require_relative('sql_runner')
+require_relative('db/sql_runner')
 
 class Customer
   attr_accessor :name, :funds
@@ -11,6 +11,19 @@ class Customer
     @funds = options["funds"].to_i
   end
 
-  
+  def save()
+    sql = "INSERT INTO customers
+    (name, funds)
+    VALUES
+    ($1, $2)
+    RETURNING id"
+    values = [@name, @funds]
+    @id = SqlRunner.run(sql, values)[0]["id"].to_i
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM customers"
+    SqlRunner.run(sql)
+  end
 
 end

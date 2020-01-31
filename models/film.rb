@@ -58,7 +58,10 @@ class Film
   end
 
   def most_popular_time()
-
+    time_frequencies = Hash.new(0)
+    showtimes = self.showtimes()
+    showtimes.each {|showtime| time_frequencies[showtime] += 1}
+    return time_frequencies.max_by {|time, frequency| frequency}[0]
   end
 
   def self.all

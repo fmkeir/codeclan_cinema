@@ -46,6 +46,10 @@ class Customer
     return films.map {|film| Film.new(film)}
   end
 
+  def number_of_tickets()
+    return self.films.count()
+  end
+
   def buy_ticket(film)
     @funds -= film.price()
     self.update()

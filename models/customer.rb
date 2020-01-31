@@ -69,5 +69,4 @@ class Customer
     sql = "DELETE FROM customers"
     SqlRunner.run(sql)
   end
-
 end

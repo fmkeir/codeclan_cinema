@@ -57,10 +57,20 @@ class Film
     return results.map {|result| result["film_time"]}
   end
 
+  def screenings()
+    sql = "SELECT * FROM screenings where film_id = $1"
+    values = [@id]
+    screenings = SqlRunner.run(sql, values)
+    return screenings.map {|screening| Screening.new(screening)}
+  end
+
   def most_popular_time()
-    time_frequencies = Hash.new(0)
-    self.showtimes().each {|showtime| time_frequencies[showtime] += 1}
-    return time_frequencies.max_by {|time, frequency| frequency}[0]
+    showtime_tickets = Hash.new(0)
+    screenings = self.screenings()
+    screenings.each do |screening|
+      showtime_tickets[screening.film_time] += screening.number_of_tickets()
+    end
+    return showtime_tickets.max_by {|time, num_tickets| num_tickets}[0]
   end
 
   def self.all

@@ -44,8 +44,18 @@ class Screening
     return tickets.map {|ticket| Ticket.new(ticket)}
   end
 
+  def number_of_tickets()
+    return self.tickets.count()
+  end
+
   def enough_space?()
     return self.tickets().count() < Screen.find_by_id(@screen_id).capacity
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM screenings WHERE id = $1"
+    values = [id]
+    return Screening.new(SqlRunner.run(sql, values)[0])
   end
 
   def self.all

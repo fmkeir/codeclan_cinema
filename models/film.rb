@@ -66,8 +66,7 @@ class Film
 
   def most_popular_time()
     showtime_tickets = Hash.new(0)
-    screenings = self.screenings()
-    screenings.each do |screening|
+    self.screenings().each do |screening|
       showtime_tickets[screening.film_time] += screening.number_of_tickets()
     end
     return showtime_tickets.max_by {|time, num_tickets| num_tickets}[0]

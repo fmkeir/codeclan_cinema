@@ -82,4 +82,14 @@ class Film
     sql = "DELETE FROM films"
     SqlRunner.run(sql)
   end
+
+  def self.display_schedule
+    for film in self.all()
+      screening_times = ''
+      for screening in film.screenings()
+        screening_times += screening.film_time + ' '
+      end
+      p "#{film.title}: #{screening_times.strip}"
+    end
+  end
 end

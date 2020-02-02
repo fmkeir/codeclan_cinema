@@ -17,7 +17,7 @@ customer2.save()
 
 film1 = Film.new({"title" => "Jojo Rabbit", "price" => 8})
 film1.save
-film2 = Film.new({"title" => "In bruges", "price" => 5})
+film2 = Film.new({"title" => "In Bruges", "price" => 5})
 film2.save
 
 screen1 = Screen.new({"capacity" => 10})
